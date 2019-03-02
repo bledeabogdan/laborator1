@@ -1,0 +1,11 @@
+{
+    "numberOfObjects": 20,
+    "objects": [
+        {"value": 91, "weight": 29},
+        {"value": 60, "weight": 65},
+        {"value": 61, "weight": 71},
+        {"value":  9, "weight": 60},
+        {"value": 79, "weight": 45}
+    ],
+    "weight": 200
+}
