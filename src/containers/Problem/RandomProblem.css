@@ -1,0 +1,73 @@
+.Problem{
+    width: 400px;
+    height: 460px;
+    background: #3F51B5;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px #808080;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.ProblemHeader{
+    height: 10%;
+    border-radius: 15px 15px 0 0 ;
+    background: #fefefe;
+}
+
+.ProblemBody{
+    height: 30%;
+    display: flex;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0 0 15px 15px;
+}
+
+.ProblemBody img{
+    width: 80px;
+    height: 80px;
+}
+
+.ProblemFooter{
+    height: 25%;
+    margin-top: 20px;
+}
+
+.ProblemFooter button{
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    background: #16A085;
+    padding: 5px;
+    font-size: 15px;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+.ProblemFooter button:disabled{
+    background: #99A3A4;
+}
+
+.ProblemFooter input {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.AddNewObject{
+    color:white;
+    display: flex;
+    flex-direction: row;
+}
+.AddNewObject input{
+    width: 90%;
+}

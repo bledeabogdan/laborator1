@@ -1,65 +1,25 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { object } from 'prop-types';
+import Problem from '../Problem/Problem';
+import RandomProblem from '../Problem/RandomProblem';
+import classes from './Laborator1.css';
+import generateRandomSolution from '../../utils/generateRandomSolution';
+
 class Laborator1 extends Component {
     state = {
         objects: [],
         solution: "",
         numberOfObjects: 5,
-        weight: 524
+        weight: 524,
+        table: null
     }
 
-    componentDidMount() {
-        axios.get('https://artificial-inteligence-a6422.firebaseio.com/object5.json')
-            .then(response => {
-                console.log(response.data);
-                let objects = response.data.objects;
-                this.setState({objects: objects});
-            })
-            .catch(err => {
-                console.log("Imposible!");
-            })
-    }
-
-    randomIntFromInterval = (min,max) => {
-        return Math.floor(Math.random()*(max-min+1)+min);
-    }
-
-    generateRandomSolution = () =>{
-        let numberOfObjects = this.state.numberOfObjects;
-        let number = 0;
-        if(numberOfObjects > 30){
-            number = this.randomIntFromInterval(1,Math.pow(2,30));
-        } else{
-            number = this.randomIntFromInterval(1,Math.pow(2,numberOfObjects));
-        }
-        var string = number.toString(2);
-        while (string.length < numberOfObjects){
-            string = Math.round(Math.random()) + string;
-        }
-        console.log("Solutia generata este:", string, ", cu lungimea: ", string.length);
+    generateSolution = () => {
+        let string = generateRandomSolution(5);
+        console.log(string);
         this.validateSolution(string);
     }
 
-    validateSolution = (string) => {
-        console.log(string, string.length);
-        let objects = this.state.objects;
-        let totalWeight = 0;
-        let totalValue = 0;
-        for(let i = 0; i < objects.length; i++){
-            if(string[i]==='1'){
-                totalWeight += objects[i].weight;
-                totalValue += objects[i].value;
-            }
-        }
-        if(totalWeight < this.state.weight){
-            console.log("Solutia cu greutatea de ",totalWeight, " in valoare de ", totalValue);
-        } else{
-            console.log("Nu e solutie!");
-        }
-        console.log()
-        console.log(objects);
-    }
+    
 
     weightChangeHandler = (event) => {
         let value = event.target.value;
@@ -71,21 +31,61 @@ class Laborator1 extends Component {
         this.setState({numberOfObjects: number});
     }
 
+    generateTable = (value) =>  {
+        let tableHeader = 
+        <div className={classes.TableRow}>
+            <div>Nr. crt.</div>
+            <div>Solutie</div>
+            <div>Valoare</div>
+            <div>Greutate</div>
+            <div>Este solutie?</div>
+        </div>;
+        let tableBody = value.map((object, key) => {
+                return (
+                    <div className={object.isSolution==="Yes"?classes.TableRowYes : classes.TableRow} key={key}>
+                        <div>{key+1}</div>
+                        <div>{object.solution.length > 20 ? object.solution.slice(1,20)+'...' : object.solution}</div>
+                        <div>{object.totalValue}</div>
+                        <div>{object.totalWeight}</div>
+                        <div>{object.isSolution}</div>
+                    </div>
+                );
+            });
+        let table = <div className={classes.Table}> {tableHeader} {tableBody} </div>;
+        this.setState({table: table});
+    }
+
 
     render(){
         return (
             <div>
-                <h1>Laborator 1</h1>
-                <select onChange={event => { this.weightChangeHandler(event) }}>
-                    <option value="524">524</option>
-                    <option value="200">200</option>
-                </select>
-                <select onChange={event => { this.numberOfObjectHandler(event) }}>
-                    <option value="5">5</option>
-                    <option value="20">20</option>
-                    <option value="200">200</option>
-                </select>
-                <button onClick={this.generateRandomSolution}>Generati o solutie aleatoare</button>
+                <h1>Random Search</h1>
+                <div className={classes.Cards}>
+                    <div className={classes.RandomProblemContainer}>
+                    <RandomProblem dontShowValues generateTable={this.generateTable}/>
+                    </div>
+                    <div className={classes.CardsContainer}>
+                        <Problem 
+                            dontShowValues
+                            numberOfObjects="5" 
+                            defaultNumberOfSolutions="1" 
+                            defaultMaxWeight="200"
+                            generateTable={this.generateTable}/>
+                        <Problem 
+                            dontShowValues
+                            numberOfObjects="20" 
+                            defaultNumberOfSolutions="1" 
+                            defaultMaxWeight="524"
+                            generateTable={this.generateTable}/>
+                        <Problem 
+                            dontShowValues
+                            numberOfObjects="200" 
+                            defaultNumberOfSolutions="1" 
+                            defaultMaxWeight="112648"
+                            generateTable={this.generateTable}/>
+                    </div>
+                </div>
+                {this.state.table}
             </div>
         );
     }

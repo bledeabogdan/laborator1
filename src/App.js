@@ -19,6 +19,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { Route, NavLink } from 'react-router-dom';
 import Laborator1 from './containers/Laborator1/Laborator1';
+import RandomHillClimbing from './containers/RandomHillClimbing/RandomHillClimbing';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -135,7 +137,7 @@ class PersistentDrawerLeft extends React.Component {
           <Divider />
           <Route>
             <List>
-              {['Laborator 1', 'Laborator 2', 'Laborator 3'].map((text, index) => (
+              {['L1Random Search','L1Random Hill-Climbing', 'Laborator 2', 'Laborator 3'].map((text, index) => (
                 <NavLink to={"/" + index} key={text}><ListItem button >
                   <ListItemIcon><InboxIcon /></ListItemIcon>
                   <ListItemText primary={text} />
@@ -151,8 +153,9 @@ class PersistentDrawerLeft extends React.Component {
         >
           <div className={classes.drawerHeader} />
           <Route exact path="/0" component={Laborator1} />
-          <Route path="/1" component={Laborator1} />
-          <Route path="/2" component={Laborator1} />
+          <Route path="/1" component={RandomHillClimbing} />
+          <Route path="/2" component={() => (<div>Soon...</div>)} />
+          <Route path="/3" component={() => (<div>Soon...</div>)} />
         </main>
         
       </div>

@@ -1,0 +1,45 @@
+.Cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: auto;
+    flex-wrap: wrap;
+}
+.RandomProblemContainer{
+    display: flex;
+    width: 25%;
+    justify-content: center;
+}
+.CardsContainer{
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Table{
+    display: table;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.TableRow{
+    display: table-row;
+    clear: both;
+    width: 100%;
+}
+.TableRowYes {
+    display: table-row;
+    clear: both;
+    background: #82E0AA;
+}
+.TableRow div, .TableRowYes div{
+    display: table-cell; 
+    text-align: center;        
+    width: 200px;         
+}
+
+.SolutionCell{
+    overflow-wrap: break-word;
+}
