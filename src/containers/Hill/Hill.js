@@ -8,7 +8,6 @@ import determineIndexesOf0FromSolution from '../../utils/determineNumberOf0FromS
 import detremineValueAndWeightOfSolution from '../../utils/determineValueAndWeightOfSolution';
 import determineNeighboringSolution from '../../utils/determineNeighboringSolution';
 import makeItSolution from '../../utils/makeItSolution';
-import determineNeighboringGreedySolution from '../../utils/determineNeighboringGreedySolution';
 
 let objectSolution;
 let solutions = [];
