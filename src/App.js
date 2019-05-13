@@ -23,6 +23,8 @@ import RandomHillClimbing from './containers/RandomHillClimbing/RandomHillClimbi
 import SimulatedAnealing from './containers/SimulatedAnealing/SimulatedAnealing';
 import AlgoritmEvolutiv from './containers/AlgoritmEvolutiv/AlgoritmEvolutiv';
 import TabuSearch from './containers/TabuSearch/TabuSearch';
+import ParticleSwarmOptimization from './containers/ParticleSwarmOptimization';
+import InverOver from './containers/InverOver/InverOver';
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -139,7 +141,7 @@ class PersistentDrawerLeft extends React.Component {
           <Divider />
           <Route>
             <List>
-              {['Random Search','Random Hill-Climbing', 'Simulated Anealing', 'Algoritm Evolutiv', 'TabuSearch'].map((text, index) => (
+              {['Random Search','Random Hill-Climbing', 'Simulated Anealing', 'Algoritm Evolutiv', 'TabuSearch', 'Particle Swarm Optimization', 'Inver Over'].map((text, index) => (
                 <NavLink to={"/" + index} key={text}><ListItem button >
                   <ListItemIcon><InboxIcon /></ListItemIcon>
                   <ListItemText primary={text} />
@@ -159,6 +161,9 @@ class PersistentDrawerLeft extends React.Component {
           <Route path="/2" component={SimulatedAnealing} />
           <Route path="/3" component={AlgoritmEvolutiv} />
           <Route path="/4" component={TabuSearch} />
+          <Route path="/5" component={ParticleSwarmOptimization} />
+          <Route path="/6" component={InverOver} />
+
         </main>
         
       </div>

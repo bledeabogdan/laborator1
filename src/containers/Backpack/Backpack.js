@@ -31,8 +31,12 @@ class Backpack extends Component {
         this.setState({generations: event.target.value})
     }
 
+    handleSelectionChange = (event) => {
+        this.setState({selection: event.target.value})
+    }
+
     test = () => {
-        algoritmEvolutiv(this.state.candidates,this.state.generations,this.state.objects,this.state.maxWeight);
+        algoritmEvolutiv(this.state.candidates,this.state.generations,this.state.objects,this.state.maxWeight, this.state.selection);
     }
 
     render(){
@@ -41,7 +45,7 @@ class Backpack extends Component {
             <div>
                 <h2>Rucsac {this.props.numberOfObjects}</h2>
                 <label>Numar candidati: </label><input type="number" placeholder="Numar candidati" onChange={(event)=>this.candidatesChangeHandler(event)} /><br />
-                <label>Njumar generatii: </label><input type="number" placeholder="Generatii" onChange={(event)=> this.generationsChangeHandler(event)} /><br />
+                <label>Numar generatii: </label><input type="number" placeholder="Generatii" onChange={(event)=> this.generationsChangeHandler(event)} /><br />
                 {buttonRender ? <button onClick={this.test}>AE</button> : null}
             </div>
     )

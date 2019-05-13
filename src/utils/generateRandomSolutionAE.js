@@ -29,6 +29,7 @@ const generateRandomSolution = (objects, maxWeight) => {
         solution.weight = valueAndWeight.weight;
     }
     return solution;
+
 }
 
 export default generateRandomSolution;

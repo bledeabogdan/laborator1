@@ -1,6 +1,7 @@
 import shuffle from "./shuffle";
 import evaluateDistance from './evaluateDistance';
 import twoSwapBest from "./twoSwapBest";
+import twoOptBest from './twoOptBest';
 let M;
 const initSolution = (distances) => {
     let array = [];
@@ -36,7 +37,8 @@ const updateMemory = (index, jindex, kTabu) => {
 }
 
 const getBestNeighbourNonTabu = (c, distances, kTabu) => {
-    let x = twoSwapBest(c, distances, M);
+    let x = twoOptBest(c,distances,M);
+    // let x = twoSwapBest(c, distances, M);
     if (x.i > x.j) {
         let aux = x.i;
         x.i = x.j;

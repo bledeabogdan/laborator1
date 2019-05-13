@@ -21,7 +21,7 @@ const simulatedAnealing = (it, T_max, alpha, T_min, distances, neighborFunction)
     while (T >= T_min) {
         k = 0;
         do {
-            var x = randomNeighborHood(c, neighborFunction);
+            var x = randomNeighborHood(c, neighborFunction, distances);
             var xCost = evaluateDistance(c, distances);
             if (xCost < cost) {
                 minDistNumber++;
@@ -38,6 +38,9 @@ const simulatedAnealing = (it, T_max, alpha, T_min, distances, neighborFunction)
             }
             k++;
         } while (k < it);
+        // if(T < T_max/2){
+        //     neighborFunction = '2swap';
+        // }
         T = T * alpha;
         console.log("T=", T);
     };
